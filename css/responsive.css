@@ -1,0 +1,48 @@
+@media (max-width: 1024px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+  .about__intro {
+    position: static;
+    margin-bottom: 2rem;
+  }
+  .about__doodles { display: none; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-pad-x: 20px;
+  }
+
+  .section-nav { display: none; }
+
+  .hero__title-layer { position: relative; }
+  .hero__title-layer--shadow,
+  .hero__title-layer--glitch,
+  .hero__title-layer--pixelblock { display: none; }
+
+  .about__timeline { padding-left: 1.6rem; }
+  .timeline-item__dot { left: -1.75rem; }
+
+  .im-window { width: 92vw; }
+
+  .skills__grid {
+    grid-template-columns: 1fr;
+  }
+  .skills__grid--wide {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .pixel-cursor { display: none; }
+  html, body, a, button, .install-card, .project-card { cursor: auto; }
+}
+
+@media (max-width: 480px) {
+  .hero__title { font-size: clamp(1.3rem, 12vw, 2.8rem); }
+  .marquee__track { font-size: 0.55rem; }
+  .about__intro { transform: rotate(0); }
+  .skills__grid--wide {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+

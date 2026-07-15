@@ -1,0 +1,507 @@
+/* ==========================================================
+   CURSOR
+   ========================================================== */
+.pixel-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  z-index: 10000;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.pixel-cursor__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--red);
+  image-rendering: pixelated;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.pixel-cursor__ring {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--ink);
+  transform: translate(-50%, -50%);
+  transition: width 0.18s var(--ease-bounce), height 0.18s var(--ease-bounce), border-color 0.18s, background 0.18s, opacity 0.18s;
+  opacity: 0.6;
+}
+
+.pixel-cursor.is-hover .pixel-cursor__ring {
+  width: 54px;
+  height: 54px;
+  border-color: var(--red);
+  background: rgba(255,59,59,0.08);
+}
+
+.pixel-cursor.is-down .pixel-cursor__dot {
+  transform: translate(-50%, -50%) scale(1.6);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .pixel-cursor { display: none; }
+  html, body, a, button, .install-card, .project-card { cursor: auto; }
+}
+
+/* ==========================================================
+   BACKGROUND TEXTURES / MOVING LAYERS
+   ========================================================== */
+.speed-lines {
+  position: absolute;
+  inset: -10%;
+  background-image: repeating-linear-gradient(115deg, rgba(31,31,31,0.06) 0 2px, transparent 2px 40px);
+  animation: speedLineDrift 14s linear infinite;
+}
+
+@keyframes speedLineDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-200px); }
+}
+
+.halftone-layer {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(31,31,31,0.12) 1.4px, transparent 1.6px);
+  background-size: 16px 16px;
+  opacity: 0.5;
+  animation: halftoneFloat 8s ease-in-out infinite;
+}
+
+@keyframes halftoneFloat {
+  0%, 100% { background-position: 0 0; }
+  50% { background-position: 8px 8px; }
+}
+
+.grid-layer {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(31,31,31,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31,31,31,0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  animation: gridPan 20s linear infinite;
+}
+
+.grid-layer--dense {
+  background-image:
+    linear-gradient(rgba(244,241,232,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244,241,232,0.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+@keyframes gridPan {
+  from { background-position: 0 0; }
+  to { background-position: 42px 42px; }
+}
+
+.crt-lines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(244,241,232,0.035) 0 1px, transparent 1px 3px);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.paper-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.paper-texture--light { opacity: 0.045; }
+
+/* ---- Hero halftone gradient background ---- */
+.halftone-gradient-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% -10%, var(--yellow) 0%, var(--orange) 45%, var(--red) 85%);
+  animation: heroGradientShift 12s ease-in-out infinite;
+}
+
+@keyframes heroGradientShift {
+  0%, 100% { background-position: 50% 0%; }
+  50% { background-position: 50% 8%; }
+}
+
+.halftone-dots-layer {
+  position: absolute;
+  inset: -5%;
+  background-image: radial-gradient(circle, rgba(31,31,31,0.5) 3.2px, transparent 3.4px);
+  background-size: 26px 26px;
+  mix-blend-mode: multiply;
+  opacity: 0.28;
+  animation: halftoneFloat 9s ease-in-out infinite;
+}
+
+.halftone-dots-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(244,241,232,0.4) 1.6px, transparent 1.8px);
+  background-size: 13px 13px;
+  background-position: 6.5px 6.5px;
+  mix-blend-mode: overlay;
+}
+
+.hero__bloom {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(50% 40% at 50% 20%, rgba(255,255,255,0.55), transparent 70%);
+  mix-blend-mode: soft-light;
+  animation: bloomPulse 6s ease-in-out infinite;
+}
+
+@keyframes bloomPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  animation: grainShift 0.4s steps(2) infinite;
+}
+
+@keyframes grainShift {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-1%, 1%); }
+  100% { transform: translate(1%, -1%); }
+}
+
+/* ==========================================================
+   FLOATING SHAPES
+   ========================================================== */
+.floating-shape {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.85;
+  will-change: transform;
+}
+
+.shape--circle { width: 90px; height: 90px; border-radius: 50%; border: var(--border-w) solid var(--ink); }
+.shape--square { width: 70px; height: 70px; border: var(--border-w) solid var(--ink); transform: rotate(12deg); }
+.shape--triangle {
+  width: 0; height: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-bottom: 78px solid var(--ink);
+  background: none !important;
+}
+.shape--star {
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+.shape--blob {
+  width: 110px; height: 90px;
+  border: var(--border-w) solid var(--ink);
+  border-radius: 60% 40% 55% 45% / 50% 55% 45% 50%;
+}
+
+.shape--small { transform: scale(0.55); }
+
+.shape--red { border-color: var(--red); color: var(--red); }
+.shape--yellow { border-color: var(--yellow); color: var(--yellow); background: rgba(255,201,60,0.15); }
+.shape--pink { border-color: var(--pink); color: var(--pink); background: rgba(255,111,176,0.12); }
+.shape--cyan { border-color: var(--cyan); color: var(--cyan); border-bottom-color: var(--cyan); }
+.shape--green { border-color: var(--green); color: var(--green); }
+.shape--purple { border-color: var(--purple); color: var(--purple); background: rgba(176,140,255,0.12); }
+
+.shape--circle { top: 15%; left: 8%; animation: floatA 7s ease-in-out infinite; }
+.shape--triangle { top: 65%; left: 82%; animation: floatB 8.5s ease-in-out infinite; }
+.shape--square { top: 12%; left: 78%; animation: floatC 6.5s ease-in-out infinite; }
+.shape--blob { top: 70%; left: 12%; animation: floatA 9s ease-in-out infinite; }
+.shape--star { top: 40%; left: 88%; animation: spinFloat 10s linear infinite; }
+.shape--purple.shape--small { top: 82%; left: 55%; animation: floatB 7.5s ease-in-out infinite; }
+
+@keyframes floatA {
+  0%, 100% { transform: translate(0,0) rotate(0deg); }
+  50% { transform: translate(14px, -22px) rotate(8deg); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translate(0,0) rotate(0deg); }
+  50% { transform: translate(-18px, 16px) rotate(-10deg); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translate(0,0) rotate(12deg); }
+  50% { transform: translate(10px, 18px) rotate(28deg); }
+}
+@keyframes spinFloat {
+  0% { transform: rotate(0deg) translateY(0); }
+  50% { transform: rotate(180deg) translateY(-12px); }
+  100% { transform: rotate(360deg) translateY(0); }
+}
+
+/* ==========================================================
+   TITLE GLITCH / DISTORTION
+   ========================================================== */
+.hero__title-layer--glitch {
+  animation: titleGlitch 3.6s steps(1) infinite;
+}
+
+@keyframes titleGlitch {
+  0%, 92%, 100% { transform: translate(0,0); opacity: 0; clip-path: inset(0 0 0 0); }
+  93% { transform: translate(-6px, 2px); opacity: 0.7; clip-path: inset(10% 0 60% 0); }
+  95% { transform: translate(6px, -2px); opacity: 0.7; clip-path: inset(50% 0 10% 0); }
+  97% { transform: translate(-3px, 0); opacity: 0.5; clip-path: inset(30% 0 40% 0); }
+}
+
+.hero__title-layer--shadow {
+  animation: shadowShift 4s ease-in-out infinite;
+}
+
+@keyframes shadowShift {
+  0%, 100% { transform: translate(8px, 8px); }
+  50% { transform: translate(11px, 5px); }
+}
+
+/* ==========================================================
+   SCROLL-REVEAL ANIMATIONS (JS toggles .is-visible)
+   ========================================================== */
+.reveal-pop, .reveal-title, .reveal-slide-left, .reveal-slide-right {
+  opacity: 0;
+}
+
+.reveal-pop {
+  transform: scale(0.6) rotate(-4deg);
+  transition: opacity 0.6s var(--ease-overshoot), transform 0.7s var(--ease-overshoot);
+}
+.reveal-pop.is-visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.reveal-title {
+  transform: translateY(60px) scale(0.92);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.8s var(--ease-overshoot);
+}
+.reveal-title.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-slide-left {
+  transform: translateX(-90px) rotate(-3deg);
+  transition: opacity 0.6s var(--ease-smooth), transform 0.75s var(--ease-overshoot);
+}
+.reveal-slide-left.is-visible {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+.reveal-slide-right {
+  transform: translateX(90px) rotate(3deg);
+  transition: opacity 0.6s var(--ease-smooth), transform 0.75s var(--ease-overshoot);
+}
+.reveal-slide-right.is-visible {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+/* Stagger helper set by JS via inline transition-delay */
+
+/* ==========================================================
+   IDLE / AMBIENT
+   ========================================================== */
+@keyframes idleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+.sticky-note, .paper-cutout, .install-card {
+  animation: idleFloat 5.5s ease-in-out infinite;
+}
+
+.sticky-note:nth-of-type(odd), .timeline-item:nth-child(even) .paper-cutout {
+  animation-delay: -2.2s;
+}
+
+/* sparkle rotation */
+.sparkle {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  color: var(--yellow);
+  font-size: 1rem;
+  animation: sparkleSpin 2.4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkleSpin {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+  50% { transform: rotate(180deg) scale(1.3); opacity: 1; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.7; }
+}
+
+/* button squash + hover bounce */
+.btn {
+  transition: transform var(--dur-fast) var(--ease-bounce), box-shadow var(--dur-fast) ease;
+}
+.btn:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+.btn:active {
+  transform: scale(0.92, 0.88) translateY(2px);
+}
+
+/* card lift/shake on hover, used in components.css alongside these keyframes */
+@keyframes cardShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-1.2deg); }
+  75% { transform: rotate(1.2deg); }
+}
+
+/* pixel particle drift for portfolio/skills backgrounds */
+.pixel-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--ink);
+  opacity: 0.5;
+  animation: pixelDrift linear infinite;
+}
+
+@keyframes pixelDrift {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-120vh) translateX(30px); opacity: 0; }
+}
+
+/* Konami / easter egg overlay */
+.easter-egg {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--red);
+  color: var(--cream);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.easter-egg.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  animation: eggFlash 0.6s steps(4);
+}
+
+@keyframes eggFlash {
+  0%, 100% { background: var(--red); }
+  50% { background: var(--cyan); }
+}
+
+.easter-egg__title {
+  font-family: var(--font-pixel);
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  margin-bottom: 1rem;
+  animation: logoWobble 1s ease-in-out infinite;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.easter-egg__sub {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================
+   HAND-DRAWN / TURBULENCE DISPLACEMENT
+   ========================================================== */
+.section-title,
+.hero__tag,
+.timeline-item__card h3,
+.installer__titlebar-title,
+.im-window__title,
+.footer__hint {
+  filter: url(#sketchy);
+}
+
+.install-card, .project-card, .sticky-note, .paper-cutout {
+  transition: transform 0.3s var(--ease-overshoot), box-shadow 0.3s ease, filter 0.25s ease;
+}
+
+
+
+
+.floating-shape.shape--blob { filter: url(#blob-wobble); }
+
+/* ==========================================================
+   REVEAL DISTORT (organic turbulence image reveal on scroll)
+   ========================================================== */
+.reveal-distort {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: url(#sketchy-strong) blur(6px);
+  transition: opacity 0.7s var(--ease-smooth), transform 0.8s var(--ease-overshoot), filter 0.5s steps(3, end);
+}
+
+.reveal-distort.is-visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: none;
+}
+
+/* ==========================================================
+   INSTALLER METERS
+   ========================================================== */
+.installer__disk-meter-fill {
+  height: 100%;
+  width: 62%;
+  background: repeating-linear-gradient(45deg, var(--green) 0 6px, var(--cyan) 6px 12px);
+  background-size: 200% 100%;
+  animation: diskShimmer 3s linear infinite;
+}
+
+@keyframes diskShimmer {
+  from { background-position: 0 0; }
+  to { background-position: 34px 0; }
+}
+
+.installer__progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--red), var(--yellow), var(--green));
+  transition: width 0.6s var(--ease-smooth);
+}
+
+/* ==========================================================
+   CRT / CHROMATIC ABERRATION / SCANLINE UTILITIES
+   ========================================================== */
+.chroma-text {
+  position: relative;
+}
+
+.chroma-text::before,
+.chroma-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+}
+
+.chroma-text::before { color: var(--cyan); transform: translate(-2px, 0); mix-blend-mode: screen; }
+.chroma-text::after { color: var(--red); transform: translate(2px, 0); mix-blend-mode: screen; }
