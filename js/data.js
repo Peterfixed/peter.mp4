@@ -62,13 +62,13 @@ const projects = [
     accent: "red",
   },
   {
-    id: "99 Nights",
-    title: "Roblox 99 Nights Intro Motion",
+    id: "roblox-intro-motion",
+    title: "Roblox Intro Motion",
     thumbnail: "",
     youtube: "https://youtu.be/CvDrjwSs8lA",
     description:
       "A Roblox intro of 99 nights in a viral style of edition.",
-    software: ["Adobe Premiere Pro", "Adobe After Effects"],
+    software: ["Caguei", "Adobe After Effects"],
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
