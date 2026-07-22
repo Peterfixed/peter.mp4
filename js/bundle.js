@@ -43,7 +43,7 @@ const projects = [
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
-    accent: "cyan",
+    accent: "red",
   },
   {
     id: "roblox-99nights-intro",
