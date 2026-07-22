@@ -61,6 +61,18 @@ const projects = [
     role: "Editor & Motion Designer",
     accent: "cyan",
   },
+  {
+    id: "roblox-intro-motion",
+    title: "Roblox Intro Motion",
+    thumbnail: "",
+    youtube: "https://youtu.be/CvDrjwSs8lA",
+    description:
+      "A Roblox intro of 99 nights in a viral style of edition.",
+    software: ["Adobe Premiere Pro", "Adobe After Effects"],
+    style: "Gaming motion graphics",
+    role: "Editor & Motion Designer",
+    accent: "cyan",
+  },
 ];
 
 // Resolve thumbnails automatically from YouTube when not provided.
