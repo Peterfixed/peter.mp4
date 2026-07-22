@@ -45,6 +45,18 @@ const projects = [
     role: "Editor & Motion Designer",
     accent: "cyan",
   },
+  {
+    id: "roblox-99nights-intro",
+    title: "Roblox 99 Nights Intro",
+    thumbnail: "",
+    youtube: "https://youtu.be/CvDrjwSs8lA",
+    description:
+      "A Roblox intro of 99 nights in a viral style of edition.",
+    software: ["Adobe Premiere Pro", "Adobe After Effects"],
+    style: "Gaming motion graphics",
+    role: "Editor & Motion Designer",
+    accent: "red",
+  },
 ];
 
 projects.forEach((p) => {
