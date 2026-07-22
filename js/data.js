@@ -62,7 +62,7 @@ const projects = [
     accent: "red",
   },
   {
-    id: "roblox-99nights-intro",
+    id: "Roblox-99-Nights-Intro",
     title: "Roblox 99 Nights Intro",
     thumbnail: "",
     youtube: "https://youtu.be/CvDrjwSs8lA",
