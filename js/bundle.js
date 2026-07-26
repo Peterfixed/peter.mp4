@@ -57,18 +57,6 @@ const projects = [
     role: "Editor & Motion Designer",
     accent: "red",
   },
-  {
-    id: "Meu Primeiro Video",
-    title: "My First Video",
-    thumbnail: "",
-    youtube: "https://youtu.be/xEJoHsZ5Ds8?si=F4QUr3IPAAy7deqT",
-    description:
-      "My First Video On Youtube.",
-    software: ["Adobe Premiere Pro", "Adobe After Effects"],
-    style: "Long form and Motion graphics",
-    role: "Editor & Motion Designer",
-    accent: "red",
-  },
 ];
 
 projects.forEach((p) => {
