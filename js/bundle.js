@@ -126,6 +126,19 @@ const projects = [
     accent: "red",
     categories: ["long-form"],
   },
+  {
+    id: "My first Video",
+    title: "My first video",
+    thumbnail: "",
+    youtube: "https://youtu.be/rwKTxNSZ7go",
+    description:
+      "My first Video on youtube.",
+    software: ["Adobe Premiere Pro", "Adobe After Effects"],
+    style: "Gaming motion graphics",
+    role: "Editor & Motion Designer",
+    accent: "red",
+    categories: ["long-form"],
+  },
   /*
    *  EXEMPLO — copie e preencha para adicionar novo vídeo:
    *
