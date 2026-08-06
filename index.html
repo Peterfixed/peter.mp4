@@ -12,7 +12,6 @@
 
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/variables.css">
-<link rel="stylesheet" href="css/loading.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/components.css">
@@ -56,28 +55,11 @@
   <div class="pixel-cursor__ring"></div>
 </div>
 
-<!-- ============ LOADING SCREEN ============ -->
-<div class="loading-screen" id="loadingScreen">
-  <div class="loading-screen__crt"></div>
-  <div class="loading-screen__scan"></div>
-  <div class="loading-screen__content">
-    <div class="loading-screen__logo">PETER<span class="blink">.</span>MP4</div>
-    <div class="loading-screen__bar">
-      <div class="loading-screen__bar-fill" id="loadingBarFill"></div>
-      <div class="loading-screen__bar-pixels" id="loadingBarPixels"></div>
-    </div>
-    <div class="loading-screen__msg" id="loadingMsg">Loading assets...</div>
-    <div class="loading-screen__percent" id="loadingPercent">0%</div>
-  </div>
-  <div class="loading-screen__noise"></div>
-</div>
-
 <!-- ============ NAV DOTS ============ -->
 <nav class="section-nav" id="sectionNav" aria-label="Section navigation">
   <a href="#home" class="section-nav__dot active" data-label="Home"></a>
-  <a href="#about" class="section-nav__dot" data-label="About"></a>
-  <a href="#skills" class="section-nav__dot" data-label="Skills"></a>
   <a href="#portfolio" class="section-nav__dot" data-label="Work"></a>
+  <a href="#about" class="section-nav__dot" data-label="About"></a>
   <a href="#contact" class="section-nav__dot" data-label="Contact"></a>
 </nav>
 
@@ -142,14 +124,30 @@
   </section>
 
   <!-- ============================================================ -->
+  <!-- PORTFOLIO -->
+  <!-- ============================================================ -->
+  <section class="section portfolio" id="portfolio">
+    <div class="paper-texture paper-texture--light"></div>
+    <div class="floating-shape shape--blob shape--purple shape--small" data-parallax="0.15" style="top:6%;right:8%;filter:url(#blob-wobble)"></div>
+    <span class="sticker sticker--tape sticker--tape-portfolio" aria-hidden="true"></span>
+
+    <h2 class="section-title reveal-title" data-split>
+      <span class="section-title__tag">SHOWREEL.MP4</span>
+      <span data-i18n="portfolio-title">Selected Work</span>
+    </h2>
+    <p class="portfolio__hint reveal-pop" data-i18n="portfolio-hint">hover to preview · click to open</p>
+
+    <div class="portfolio__filters" id="portfolioFilters" aria-label="Filter projects by category"></div>
+
+    <div class="portfolio__grid" id="portfolioGrid"><!-- injected by JS --></div>
+  </section>
+
+  <!-- ============================================================ -->
   <!-- ABOUT -->
   <!-- ============================================================ -->
   <section class="section about" id="about">
-    <div class="paper-texture"></div>
-    <div class="floating-shape shape--circle shape--yellow shape--small" data-parallax="0.2" style="top:8%;left:4%"></div>
-    <div class="floating-shape shape--star shape--pink shape--small" data-parallax="0.3" style="bottom:10%;right:6%"></div>
-    <span class="sticker sticker--tape sticker--tape-about" aria-hidden="true"></span>
-    <span class="sticker sticker--badge sticker--badge-about" aria-hidden="true">EST.<br>2020</span>
+    <div class="grid-layer grid-layer--dense"></div>
+    <div class="crt-lines"></div>
 
     <h2 class="section-title reveal-title" data-split>
       <span class="section-title__tag" data-i18n="about-tag">ABOUT_PETER.TXT</span>
@@ -212,183 +210,14 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- SKILLS -->
-  <!-- ============================================================ -->
-  <section class="section skills" id="skills">
-    <div class="crt-lines"></div>
-    <div class="grid-layer grid-layer--dense"></div>
-    <span class="sticker sticker--tape sticker--tape-3" aria-hidden="true"></span>
-
-    <h2 class="section-title reveal-title section-title--light" data-split>
-      <span class="section-title__tag">SYSTEM_SKILLS.EXE</span>
-      Skill Installer
-    </h2>
-    <p class="skills__subtitle reveal-pop" data-i18n="skills-subtitle">tools & skills · v2.0.4 · 100% retro-compatible</p>
-
-    <!-- SOFTWARE CARDS -->
-    <div class="skills__section-label reveal-pop">SOFTWARE</div>
-    <div class="skills__grid reveal-pop" id="skillsGrid">
-
-      <!-- Adobe Premiere Pro -->
-      <div class="skill-card skill-card--premiere">
-        <div class="skill-card__header">
-          <div class="skill-card__logo">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-              <rect width="48" height="48" rx="8" fill="#2C0041"/>
-              <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#E8AAFF">Pr</text>
-            </svg>
-          </div>
-          <div class="skill-card__meta">
-            <p class="skill-card__name">Adobe Premiere Pro</p>
-            <span class="skill-card__tag">Non-Linear Editing</span>
-          </div>
-          <span class="skill-card__badge">95%</span>
-        </div>
-        <p class="skill-card__desc">Cortes precisos, pacing, sincronia de áudio e color grade.</p>
-        <div class="skill-card__bar">
-          <div class="skill-card__bar-fill" data-level="95" style="--bar-color: #E8AAFF"></div>
-        </div>
-        <div class="skill-card__tags">
-          <span>Corte &amp; Pacing</span>
-          <span>Color Grade</span>
-          <span>Sound Sync</span>
-          <span>Exports</span>
-        </div>
-      </div>
-
-      <!-- Adobe After Effects -->
-      <div class="skill-card skill-card--ae">
-        <div class="skill-card__header">
-          <div class="skill-card__logo">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
-              <rect width="48" height="48" rx="8" fill="#1A003E"/>
-              <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#9F82FF">Ae</text>
-            </svg>
-          </div>
-          <div class="skill-card__meta">
-            <p class="skill-card__name">Adobe After Effects</p>
-            <span class="skill-card__tag">Motion &amp; VFX</span>
-          </div>
-          <span class="skill-card__badge">90%</span>
-        </div>
-        <p class="skill-card__desc">Motion graphics, kinetic type, VFX layering e compositing.</p>
-        <div class="skill-card__bar">
-          <div class="skill-card__bar-fill" data-level="90" style="--bar-color: #9F82FF"></div>
-        </div>
-        <div class="skill-card__tags">
-          <span>Motion Graphics</span>
-          <span>Kinetic Type</span>
-          <span>VFX</span>
-          <span>Compositing</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- CRAFT & LANGUAGES -->
-    <div class="skills__section-label reveal-pop" style="margin-top: 3rem;">CRAFT &amp; IDIOMAS</div>
-    <div class="skills__grid skills__grid--wide reveal-pop">
-
-      <div class="skill-card skill-card--craft" style="--craft-color: var(--yellow)">
-        <div class="skill-card__header">
-          <span class="skill-card__emoji">🔊</span>
-          <div class="skill-card__meta">
-            <p class="skill-card__name">Sound Design</p>
-            <span class="skill-card__tag">Craft Module</span>
-          </div>
-          <span class="skill-card__badge">85%</span>
-        </div>
-        <div class="skill-card__bar">
-          <div class="skill-card__bar-fill" data-level="85" style="--bar-color: var(--yellow)"></div>
-        </div>
-      </div>
-
-      <div class="skill-card skill-card--craft" style="--craft-color: var(--pink)">
-        <div class="skill-card__header">
-          <span class="skill-card__emoji">🎨</span>
-          <div class="skill-card__meta">
-            <p class="skill-card__name">Color Grading</p>
-            <span class="skill-card__tag">Craft Module</span>
-          </div>
-          <span class="skill-card__badge">88%</span>
-        </div>
-        <div class="skill-card__bar">
-          <div class="skill-card__bar-fill" data-level="88" style="--bar-color: var(--pink)"></div>
-        </div>
-      </div>
-
-      <div class="skill-card skill-card--craft" style="--craft-color: var(--cyan)">
-        <div class="skill-card__header">
-          <span class="skill-card__emoji">🏆</span>
-          <div class="skill-card__meta">
-            <p class="skill-card__name">Typography</p>
-            <span class="skill-card__tag" data-i18n="craft-tag">Craft Module</span>
-          </div>
-          <span class="skill-card__badge">92%</span>
-        </div>
-        <div class="skill-card__bar">
-          <div class="skill-card__bar-fill" data-level="92" style="--bar-color: var(--cyan)"></div>
-        </div>
-      </div>
-
-      <div class="skill-card skill-card--craft" style="--craft-color: var(--cyan)">
-        <div class="skill-card__header">
-          <span class="skill-card__emoji">🇧🇷</span>
-          <div class="skill-card__meta">
-            <p class="skill-card__name" data-i18n="lang-pt-name">Português</p>
-            <span class="skill-card__tag" data-i18n="lang-pt-tag">Nativo</span>
-          </div>
-          <span class="skill-card__badge">100%</span>
-        </div>
-        <div class="skill-card__bar">
-          <div class="skill-card__bar-fill" data-level="100" style="--bar-color: var(--cyan)"></div>
-        </div>
-      </div>
-
-      <div class="skill-card skill-card--craft" style="--craft-color: var(--green)">
-        <div class="skill-card__header">
-          <span class="skill-card__emoji">🇺🇸</span>
-          <div class="skill-card__meta">
-            <p class="skill-card__name">English</p>
-            <span class="skill-card__tag" data-i18n="lang-en-tag">Intermediário</span>
-          </div>
-          <span class="skill-card__badge">90%</span>
-        </div>
-        <div class="skill-card__bar">
-          <div class="skill-card__bar-fill" data-level="90" style="--bar-color: var(--green)"></div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- PORTFOLIO -->
-  <!-- ============================================================ -->
-  <section class="section portfolio" id="portfolio">
-    <div class="paper-texture paper-texture--light"></div>
-    <div class="floating-shape shape--blob shape--purple shape--small" data-parallax="0.15" style="top:6%;right:8%;filter:url(#blob-wobble)"></div>
-    <span class="sticker sticker--tape sticker--tape-portfolio" aria-hidden="true"></span>
-
-    <h2 class="section-title reveal-title" data-split>
-      <span class="section-title__tag">SHOWREEL.MP4</span>
-      <span data-i18n="portfolio-title">Selected Work</span>
-    </h2>
-    <p class="portfolio__hint reveal-pop" data-i18n="portfolio-hint">hover to preview · click to open</p>
-
-    <div class="portfolio__grid" id="portfolioGrid"><!-- injected by JS --></div>
-  </section>
 
   <!-- ============================================================ -->
   <!-- CONTACT -->
   <!-- ============================================================ -->
   <section class="section contact" id="contact">
-    <div class="grid-layer"></div>
-    <div class="floating-shape shape--star shape--yellow shape--small" data-parallax="0.25" style="top:10%;left:6%"></div>
-    <div class="floating-shape shape--circle shape--red shape--small" data-parallax="0.3" style="bottom:8%;right:10%"></div>
+    <div class="paper-texture paper-texture--light"></div>
 
-    <h2 class="section-title reveal-title section-title--light" data-split>
+    <h2 class="section-title reveal-title" data-split>
       <span class="section-title__tag">MESSENGER.EXE</span>
       <span data-i18n="contact-title">Let's Talk</span>
     </h2>

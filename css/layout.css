@@ -219,9 +219,54 @@ a, button, .install-card, .project-card {
 
 /* ================= ABOUT ================= */
 .about {
-  background: var(--cream);
+  background: var(--ink);
+  color: var(--cream);
   justify-content: flex-start;
 }
+
+.about .section-title { color: var(--cream); }
+.about .section-title__tag { color: var(--red); }
+
+/* Sticky note on dark: keep bright but add glow */
+.about .sticky-note {
+  color: var(--ink);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.35), 0 0 40px rgba(255,201,60,0.12);
+}
+
+/* Paper cutout cards on dark bg: dark card with colored left accent */
+.about .paper-cutout {
+  background: rgba(244,241,232,0.06);
+  border-color: rgba(244,241,232,0.15);
+  color: var(--cream);
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.35);
+  border-left: 4px solid var(--red);
+}
+
+.about .timeline-item:nth-child(2) .paper-cutout { border-left-color: var(--yellow); }
+.about .timeline-item:nth-child(3) .paper-cutout { border-left-color: var(--cyan); }
+.about .timeline-item:nth-child(4) .paper-cutout { border-left-color: var(--green); }
+
+.about .timeline-item__year {
+  color: var(--red);
+}
+.about .timeline-item:nth-child(2) .timeline-item__year { color: var(--yellow); }
+.about .timeline-item:nth-child(3) .timeline-item__year { color: var(--cyan); }
+.about .timeline-item:nth-child(4) .timeline-item__year { color: var(--green); }
+
+.about .timeline-item__card h3 { color: var(--cream); }
+.about .timeline-item__card p { color: var(--cream); opacity: 0.7; }
+
+/* Timeline line — glowing dashed */
+.about .about__timeline-line {
+  background: repeating-linear-gradient(180deg, rgba(255,59,59,0.6) 0 8px, transparent 8px 18px);
+  box-shadow: 0 0 12px rgba(255,59,59,0.2);
+}
+
+/* Doodles on dark */
+.about .doodle { color: var(--cream); opacity: 0.15; }
+
+/* Badge sticker */
+.about .sticker--badge { box-shadow: 4px 4px 0 rgba(0,0,0,0.4), 0 0 20px rgba(255,59,59,0.15); }
 
 .about__grid {
   position: relative;
@@ -272,6 +317,15 @@ a, button, .install-card, .project-card {
 .timeline-item:nth-child(2) .timeline-item__dot { background: var(--yellow); }
 .timeline-item:nth-child(3) .timeline-item__dot { background: var(--cyan); }
 .timeline-item:nth-child(4) .timeline-item__dot { background: var(--green); }
+
+/* Dot glow on dark bg */
+.about .timeline-item__dot {
+  box-shadow: 0 0 10px rgba(255,59,59,0.3);
+  border-color: rgba(244,241,232,0.2);
+}
+.about .timeline-item:nth-child(2) .timeline-item__dot { box-shadow: 0 0 10px rgba(255,201,60,0.3); }
+.about .timeline-item:nth-child(3) .timeline-item__dot { box-shadow: 0 0 10px rgba(0,245,212,0.3); }
+.about .timeline-item:nth-child(4) .timeline-item__dot { box-shadow: 0 0 10px rgba(105,240,174,0.3); }
 
 .timeline-item__year {
   font-family: var(--font-pixel);
@@ -681,10 +735,56 @@ a, button, .install-card, .project-card {
   gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* ---- Category Filter Bar ---- */
+.portfolio__filters {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 2.4rem;
+}
+
+.portfolio-filter {
+  --filter-color: var(--red);
+  font-family: var(--font-pixel);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.1rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 rgba(31,31,31,0.18);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease-bounce), box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.portfolio-filter:hover {
+  transform: translateY(-3px) rotate(-1deg);
+  box-shadow: 5px 5px 0 rgba(31,31,31,0.22);
+}
+
+.portfolio-filter--active {
+  background: var(--filter-color);
+  border-color: var(--ink);
+  box-shadow: 4px 4px 0 rgba(31,31,31,0.25);
+  transform: rotate(-1deg);
+}
+
+.portfolio__empty {
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  opacity: 0.5;
+  padding: 3rem 0;
+  grid-column: 1 / -1;
+}
+
+
 /* ================= CONTACT ================= */
 .contact {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--ink);
   align-items: center;
   justify-content: center;
   text-align: center;

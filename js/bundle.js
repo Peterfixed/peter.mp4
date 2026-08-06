@@ -20,6 +20,59 @@ function getYouTubeId(url) {
   return null;
 }
 
+/* ============================================================
+   DATA — CATEGORIES
+   ============================================================
+
+   HOW TO ADD A NEW CATEGORY / "PASTA":
+   ─────────────────────────────────────
+   1. Adicione um novo objeto em `categories` abaixo com:
+      - id:    slug único (ex: "anime")  — use só letras e hífens
+      - label: nome que aparece na aba   (ex: "Anime Edits")
+      - color: cor do botão              (red | yellow | pink | cyan | green | purple)
+
+   2. Nos projetos abaixo, adicione esse id no array `categories`
+      do projeto correspondente.  Um projeto pode estar em
+      várias categorias ao mesmo tempo.
+
+   3. Pronto! O filtro aparece automaticamente.
+
+   ─────────────────────────────────────────────────────────── */
+
+const categories = [
+  // "all" é sempre gerado automaticamente — não precisa criar
+  { id: "selected",  label: "Selected Work", color: "yellow" },
+  { id: "roblox",    label: "Roblox",        color: "cyan"   },
+  { id: "long-form", label: "Long Form",     color: "pink"   },
+  /*
+   *  EXEMPLO para adicionar nova categoria:
+   *  { id: "anime", label: "Anime Edits", color: "green" },
+   */
+];
+
+/* ============================================================
+   DATA — PROJECTS
+   ============================================================
+
+   HOW TO ADD A NEW PROJECT:
+   ─────────────────────────
+   1. Copie um dos objetos abaixo e cole ao final do array
+      (antes do `];`), separado por vírgula.
+
+   2. Preencha os campos:
+      - id:          slug único (ex: "meu-novo-video")
+      - title:       título do projeto
+      - thumbnail:   deixe "" para usar thumbnail do YouTube automaticamente
+      - youtube:     cole o link do YouTube (youtu.be ou watch?v=)
+      - description: descrição curta
+      - software:    array com programas usados
+      - style:       estilo de edição (aparece em pixel font no card)
+      - role:        seu papel no projeto
+      - accent:      cor do card (red | yellow | pink | cyan | green | purple)
+      - categories:  array com os ids das categorias onde o vídeo vai aparecer
+
+   ─────────────────────────────────────────────────────────── */
+
 const projects = [
   {
     id: "contact-me-showreel",
@@ -32,6 +85,7 @@ const projects = [
     style: "Dynamic storytelling edit",
     role: "Editor & Motion Designer",
     accent: "red",
+    categories: ["selected", "long-form"],
   },
   {
     id: "roblox-intro-motion",
@@ -44,6 +98,7 @@ const projects = [
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
+    categories: ["roblox"],
   },
   {
     id: "roblox-99nights-intro",
@@ -56,7 +111,24 @@ const projects = [
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
+    categories: ["roblox"],
   },
+  /*
+   *  EXEMPLO — copie e preencha para adicionar novo vídeo:
+   *
+   *  {
+   *    id: "meu-novo-video",
+   *    title: "Nome do Projeto",
+   *    thumbnail: "",
+   *    youtube: "https://youtu.be/XXXXXXXXXXX",
+   *    description: "Descrição curta do projeto.",
+   *    software: ["Adobe Premiere Pro"],
+   *    style: "Estilo de edição",
+   *    role: "Editor & Motion Designer",
+   *    accent: "cyan",
+   *    categories: ["roblox"],
+   *  },
+   */
 ];
 
 projects.forEach((p) => {
@@ -66,63 +138,6 @@ projects.forEach((p) => {
   }
 });
 
-/* ============================================================
-   LOADING SCREEN
-   ============================================================ */
-const LOADING_MESSAGES = [
-  "Loading assets...",
-  "Rendering...",
-  "Adding motion...",
-  "Almost ready...",
-  "Press Start.",
-];
-
-function runLoadingScreen(onDone) {
-  const screen = document.getElementById("loadingScreen");
-  const barFill = document.getElementById("loadingBarFill");
-  const msgEl = document.getElementById("loadingMsg");
-  const percentEl = document.getElementById("loadingPercent");
-
-  if (!screen) { onDone && onDone(); return; }
-
-  let progress = 0;
-  let msgIndex = 0;
-  msgEl.textContent = LOADING_MESSAGES[0];
-
-  const step = () => {
-    const inc = 3 + Math.random() * 9;
-    progress = Math.min(100, progress + inc);
-    barFill.style.width = progress + "%";
-    percentEl.textContent = Math.floor(progress) + "%";
-
-    const targetMsgIndex = Math.min(
-      LOADING_MESSAGES.length - 1,
-      Math.floor((progress / 100) * LOADING_MESSAGES.length)
-    );
-    if (targetMsgIndex !== msgIndex) {
-      msgIndex = targetMsgIndex;
-      msgEl.textContent = LOADING_MESSAGES[msgIndex];
-    }
-
-    if (progress < 100) {
-      setTimeout(step, 140 + Math.random() * 160);
-    } else {
-      msgEl.textContent = LOADING_MESSAGES[LOADING_MESSAGES.length - 1];
-      setTimeout(finish, 550);
-    }
-  };
-
-  const finish = () => {
-    screen.classList.add("is-leaving");
-    setTimeout(() => {
-      screen.style.display = "none";
-      document.body.classList.add("is-revealed");
-      onDone && onDone();
-    }, 900);
-  };
-
-  setTimeout(step, 300);
-}
 
 /* ============================================================
    CURSOR
@@ -222,6 +237,9 @@ function initSkillBars() {
 }
 
 function initParallax() {
+  // Desativa parallax em touch/mobile para economizar CPU
+  if (matchMedia("(hover: none), (pointer: coarse)").matches) return;
+
   const els = Array.from(document.querySelectorAll("[data-parallax]"));
   if (!els.length) return;
 
@@ -265,21 +283,62 @@ function initActiveSectionNav() {
 }
 
 /* ============================================================
-   PORTFOLIO
+   PORTFOLIO — FILTERS
    ============================================================ */
-function buildEmbedUrl(youtubeId, { autoplay = false, mute = true, loop = true, controls = false } = {}) {
-  const params = new URLSearchParams({
-    autoplay: autoplay ? "1" : "0",
-    mute: mute ? "1" : "0",
-    controls: controls ? "1" : "0",
-    loop: loop ? "1" : "0",
-    playlist: loop ? youtubeId : "",
-    rel: "0",
-    modestbranding: "1",
-    playsinline: "1",
-  });
-  return `https://www.youtube.com/embed/${youtubeId}?${params.toString()}`;
+let activeCategory = "selected"; // Selected Work abre por padrão
+
+// Embaralha array (Fisher-Yates)
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
+
+function renderFilters() {
+  const container = document.getElementById("portfolioFilters");
+  if (!container) return;
+
+  // Ordem: Selected Work primeiro, demais categorias, All por último
+  categories.forEach((cat) => {
+    const btn = document.createElement("button");
+    btn.className = "portfolio-filter" + (cat.id === activeCategory ? " portfolio-filter--active" : "");
+    btn.dataset.cat = cat.id;
+    btn.textContent = cat.label;
+    btn.style.setProperty("--filter-color", `var(--${cat.color})`);
+    btn.setAttribute("aria-pressed", String(cat.id === activeCategory));
+    container.appendChild(btn);
+  });
+
+  // "All" por último
+  const allBtn = document.createElement("button");
+  allBtn.className = "portfolio-filter";
+  allBtn.dataset.cat = "all";
+  allBtn.textContent = "All";
+  allBtn.setAttribute("aria-pressed", "false");
+  container.appendChild(allBtn);
+
+  container.addEventListener("click", (e) => {
+    const btn = e.target.closest(".portfolio-filter");
+    if (!btn) return;
+    activeCategory = btn.dataset.cat;
+
+    container.querySelectorAll(".portfolio-filter").forEach((b) => {
+      const isActive = b.dataset.cat === activeCategory;
+      b.classList.toggle("portfolio-filter--active", isActive);
+      b.setAttribute("aria-pressed", String(isActive));
+    });
+
+    renderPortfolio();
+  });
+}
+
+/* ============================================================
+   PORTFOLIO — GRID
+   ============================================================ */
+const SELECTED_MAX = 6; // máximo de vídeos na aba Selected Work
 
 function renderCard(project) {
   const card = document.createElement("article");
@@ -291,7 +350,7 @@ function renderCard(project) {
   card.setAttribute("aria-label", `Open ${project.title} project details`);
 
   card.innerHTML = `
-    <div class="project-card__media reveal-distort">
+    <div class="project-card__media">
       <img class="project-card__thumb" src="${project.thumbnail}" alt="${project.title} thumbnail" loading="lazy" />
       <div class="project-card__preview"></div>
       <div class="project-card__play">▶</div>
@@ -317,10 +376,28 @@ function renderCard(project) {
 function renderPortfolio() {
   const grid = document.getElementById("portfolioGrid");
   if (!grid) return;
+
+  let filtered;
+
+  if (activeCategory === "selected") {
+    // Selected Work: pega até 6 vídeos aleatórios de TODOS os projetos
+    filtered = shuffle(projects).slice(0, SELECTED_MAX);
+  } else if (activeCategory === "all") {
+    filtered = projects;
+  } else {
+    filtered = projects.filter((p) => Array.isArray(p.categories) && p.categories.includes(activeCategory));
+  }
+
   grid.innerHTML = "";
-  projects.forEach((project) => grid.appendChild(renderCard(project)));
+
+  if (!filtered.length) {
+    grid.innerHTML = `<p class="portfolio__empty">No projects in this category yet.</p>`;
+    return;
+  }
+
+  filtered.forEach((project) => grid.appendChild(renderCard(project)));
   Array.from(grid.children).forEach((card, i) => {
-    card.classList.add("reveal-pop");
+    card.classList.add("reveal-pop", "is-visible");
     card.style.transitionDelay = `${Math.min(i * 0.1, 0.4)}s`;
   });
 }
@@ -329,17 +406,18 @@ function openProjectModal(project) {
   const modal = document.getElementById("projectModal");
   const videoEl = document.getElementById("modalVideo");
 
-  videoEl.innerHTML = `
-    <div style="position:relative;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;">
-      <img src="${project.thumbnail}" alt="${project.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.4;" />
-      <a href="${project.youtube}" target="_blank" rel="noopener noreferrer"
-        style="position:relative;z-index:2;display:inline-flex;align-items:center;gap:0.8rem;background:#ff0000;color:#fff;font-family:var(--font-display);font-size:1.1rem;font-weight:700;padding:1rem 2rem;border-radius:999px;border:3px solid #fff;box-shadow:0 6px 24px rgba(0,0,0,0.6);text-decoration:none;transition:transform 0.2s ease;"
-        onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-        Assistir no YouTube
-      </a>
-    </div>
-  `;
+  // Embed YouTube inline — o vídeo roda dentro do site sem redirecionar
+  if (project.youtubeId) {
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = "width:100%;height:100%;border:0;display:block;";
+    videoEl.innerHTML = "";
+    videoEl.appendChild(iframe);
+  } else {
+    videoEl.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;height:100%;background:#111;color:#fff;font-family:var(--font-pixel);font-size:0.8rem;">No video available</div>`;
+  }
 
   document.getElementById("modalTitle").textContent = project.title;
   document.getElementById("modalDesc").textContent = project.description;
@@ -632,6 +710,7 @@ function initLanguageSwitcher() {
    ============================================================ */
 function boot() {
   initCursor();
+  renderFilters();
   renderPortfolio();
   initModalControls();
   initContactEmail();
@@ -642,16 +721,15 @@ function boot() {
   initKeyboardNav(sections);
 
   initScrollReveal();
-  initSkillBars();
   initParallax();
   initLanguageSwitcher();
 
-  spawnPixelParticles(document.getElementById("skills"), 22);
-  spawnPixelParticles(document.getElementById("portfolio"), 14);
+  spawnPixelParticles(document.getElementById("portfolio"), 6);
 
   document.getElementById("year").textContent = new Date().getFullYear();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  runLoadingScreen(boot);
+  document.body.classList.add("is-revealed");
+  boot();
 });
