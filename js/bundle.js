@@ -85,7 +85,7 @@ const projects = [
     style: "Dynamic storytelling edit",
     role: "Editor & Motion Designer",
     accent: "red",
-    categories: ["selected", "long-form"],
+    categories: ["selected"],
   },
   {
     id: "roblox-intro-motion",
