@@ -113,6 +113,19 @@ const projects = [
     accent: "red",
     categories: ["roblox"],
   },
+   {
+    id: "Mecha camaleon Minecraft",
+    title: "8 IDIOTAS se ESCONDEM no MECCHA CHAMELEON do MINECRAFT!",
+    thumbnail: "",
+    youtube: "https://youtu.be/cv1ax-LErrA",
+    description:
+      "Esconde-esconde no Minecraft Meccha Camaleon .",
+    software: ["Adobe Premiere Pro", "Adobe After Effects"],
+    style: "Gaming motion graphics",
+    role: "Editor & Motion Designer",
+    accent: "red",
+    categories: ["long-form"],
+  },
   /*
    *  EXEMPLO — copie e preencha para adicionar novo vídeo:
    *
