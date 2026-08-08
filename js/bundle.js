@@ -43,6 +43,7 @@ const categories = [
   // "all" é sempre gerado automaticamente — não precisa criar
   { id: "selected",  label: "Selected Work", color: "yellow" },
   { id: "roblox",    label: "Roblox",        color: "cyan"   },
+  { id: "long-form", label: "Minecraft",     color: "green"   },
   { id: "long-form", label: "Long Form",     color: "pink"   },
   /*
    *  EXEMPLO para adicionar nova categoria:
@@ -124,7 +125,7 @@ const projects = [
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
-    categories: ["long-form"],
+    categories: ["Minecraft"],
   },
   {
     id: "My first Video",
@@ -138,6 +139,20 @@ const projects = [
     role: "Editor & Motion Designer",
     accent: "red",
     categories: ["long-form"],
+  },
+  {
+    id: "Nice Armour",
+    title: "Usei SECRETEAMENTE a ARMADURA DOS DEUSES no Minecraft!
+",
+    thumbnail: "",
+    youtube: "https://youtu.be/YAMLX0LzTAA",
+    description:
+      "Neste vídeo de Minecraft survival, eu decidi criar secretamente a lendária Armadura dos Deuses, cheia de poderes proibidos e encantamentos que normalmente não existem no jogo vanilla..",
+    software: ["Adobe Premiere Pro", "Adobe After Effects"],
+    style: "Gaming motion graphics",
+    role: "Editor & Motion Designer",
+    accent: "red",
+    categories: ["Minecraft"],
   },
   /*
    *  EXEMPLO — copie e preencha para adicionar novo vídeo:
