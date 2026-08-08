@@ -141,10 +141,9 @@ const projects = [
   },
   {
     id: "Nice Armour",
-    title: "Usei SECRETEAMENTE a ARMADURA DOS DEUSES no Minecraft!
-",
+    title: "Usei SECRETEAMENTE a ARMADURA DOS DEUSES no Minecraft",
     thumbnail: "",
-    youtube: "https://youtu.be/rwKTxNSZ7go",
+    youtube: "https://youtu.be/YAMLX0LzTAA",
     description:
       "Neste vídeo de Minecraft survival, eu decidi criar secretamente a lendária Armadura dos Deuses, cheia de poderes proibidos e encantamentos que normalmente não existem no jogo vanilla..",
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
