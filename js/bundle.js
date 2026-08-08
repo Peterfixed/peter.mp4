@@ -125,7 +125,7 @@ const projects = [
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
-    categories: ["Minecarft"],
+    categories: ["Minecraft"],
   },
   {
     id: "My first Video",
