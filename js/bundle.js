@@ -44,6 +44,7 @@ const categories = [
   { id: "selected",  label: "Selected Work", color: "yellow" },
   { id: "roblox",    label: "Roblox",        color: "cyan"   },
   { id: "long-form", label: "Long Form",     color: "pink"   },
+  { id: "Minecraft", label: "Minecraft",     color: "green"   },
   /*
    *  EXEMPLO para adicionar nova categoria:
    *  { id: "anime", label: "Anime Edits", color: "green" },
@@ -124,7 +125,7 @@ const projects = [
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
-    categories: ["long-form"],
+    categories: ["Minecarft"],
   },
   {
     id: "My first Video",
@@ -150,7 +151,7 @@ const projects = [
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
-    categories: ["long-form"],
+    categories: ["Minecraft"],
   },
   /*
    *  EXEMPLO — copie e preencha para adicionar novo vídeo:
