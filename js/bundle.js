@@ -21,67 +21,23 @@ function getYouTubeId(url) {
 }
 
 /* ============================================================
-   DATA — CATEGORIES
-   ============================================================
+   DATA — FALLBACK (usado quando data.json não está disponível)
+   ============================================================ */
 
-   HOW TO ADD A NEW CATEGORY / "PASTA":
-   ─────────────────────────────────────
-   1. Adicione um novo objeto em `categories` abaixo com:
-      - id:    slug único (ex: "anime")  — use só letras e hífens
-      - label: nome que aparece na aba   (ex: "Anime Edits")
-      - color: cor do botão              (red | yellow | pink | cyan | green | purple)
-
-   2. Nos projetos abaixo, adicione esse id no array `categories`
-      do projeto correspondente.  Um projeto pode estar em
-      várias categorias ao mesmo tempo.
-
-   3. Pronto! O filtro aparece automaticamente.
-
-   ─────────────────────────────────────────────────────────── */
-
-const categories = [
-  // "all" é sempre gerado automaticamente — não precisa criar
+let categories = [
   { id: "selected",  label: "Selected Work", color: "yellow" },
   { id: "roblox",    label: "Roblox",        color: "cyan"   },
   { id: "long-form", label: "Long Form",     color: "pink"   },
-  { id: "Minecraft", label: "Minecraft",     color: "green"   },
-  /*
-   *  EXEMPLO para adicionar nova categoria:
-   *  { id: "anime", label: "Anime Edits", color: "green" },
-   */
+  { id: "Minecraft", label: "Minecraft",     color: "green"  },
 ];
 
-/* ============================================================
-   DATA — PROJECTS
-   ============================================================
-
-   HOW TO ADD A NEW PROJECT:
-   ─────────────────────────
-   1. Copie um dos objetos abaixo e cole ao final do array
-      (antes do `];`), separado por vírgula.
-
-   2. Preencha os campos:
-      - id:          slug único (ex: "meu-novo-video")
-      - title:       título do projeto
-      - thumbnail:   deixe "" para usar thumbnail do YouTube automaticamente
-      - youtube:     cole o link do YouTube (youtu.be ou watch?v=)
-      - description: descrição curta
-      - software:    array com programas usados
-      - style:       estilo de edição (aparece em pixel font no card)
-      - role:        seu papel no projeto
-      - accent:      cor do card (red | yellow | pink | cyan | green | purple)
-      - categories:  array com os ids das categorias onde o vídeo vai aparecer
-
-   ─────────────────────────────────────────────────────────── */
-
-const projects = [
+let projects = [
   {
     id: "contact-me-showreel",
     title: "Contact Me Showreel",
     thumbnail: "",
     youtube: "https://youtu.be/AIvBQ2YxYQU",
-    description:
-      "A personal showreel demonstrating editing and motion design range — built to show rhythm, pacing and visual storytelling across different moods and genres.",
+    description: "A personal showreel demonstrating editing and motion design range — built to show rhythm, pacing and visual storytelling across different moods and genres.",
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
     style: "Dynamic storytelling edit",
     role: "Editor & Motion Designer",
@@ -93,8 +49,7 @@ const projects = [
     title: "Roblox Intro Motion",
     thumbnail: "",
     youtube: "https://youtu.be/uMVEi3GXrt8",
-    description:
-      "An energetic animated intro sequence for a Roblox gaming project — fast cuts, punchy sound design sync and bold kinetic type to hook viewers instantly.",
+    description: "An energetic animated intro sequence for a Roblox gaming project — fast cuts, punchy sound design sync and bold kinetic type to hook viewers instantly.",
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
@@ -106,21 +61,19 @@ const projects = [
     title: "Roblox 99 Nights Intro",
     thumbnail: "",
     youtube: "https://youtu.be/CvDrjwSs8lA",
-    description:
-      "A Roblox intro of 99 nights in a viral style of edition.",
+    description: "A Roblox intro of 99 nights in a viral style of edition.",
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
     categories: ["roblox"],
   },
-   {
+  {
     id: "Mecha camaleon Minecraft",
     title: "8 IDIOTAS se ESCONDEM no MECCHA CHAMELEON do MINECRAFT!",
     thumbnail: "",
     youtube: "https://youtu.be/cv1ax-LErrA",
-    description:
-      "Esconde-esconde no Minecraft Meccha Camaleon .",
+    description: "Esconde-esconde no Minecraft Meccha Camaleon.",
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
@@ -132,8 +85,7 @@ const projects = [
     title: "My first video",
     thumbnail: "",
     youtube: "https://youtu.be/rwKTxNSZ7go",
-    description:
-      "My first Video on youtube.",
+    description: "My first Video on youtube.",
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
@@ -145,38 +97,64 @@ const projects = [
     title: "Usei SECRETEAMENTE a ARMADURA DOS DEUSES no Minecraft",
     thumbnail: "",
     youtube: "https://youtu.be/YAMLX0LzTAA",
-    description:
-      "Neste vídeo de Minecraft survival, eu decidi criar secretamente a lendária Armadura dos Deuses, cheia de poderes proibidos e encantamentos que normalmente não existem no jogo vanilla..",
+    description: "Neste vídeo de Minecraft survival, eu decidi criar secretamente a lendária Armadura dos Deuses, cheia de poderes proibidos e encantamentos que normalmente não existem no jogo vanilla.",
     software: ["Adobe Premiere Pro", "Adobe After Effects"],
     style: "Gaming motion graphics",
     role: "Editor & Motion Designer",
     accent: "red",
     categories: ["Minecraft"],
   },
-  /*
-   *  EXEMPLO — copie e preencha para adicionar novo vídeo:
-   *
-   *  {
-   *    id: "meu-novo-video",
-   *    title: "Nome do Projeto",
-   *    thumbnail: "",
-   *    youtube: "https://youtu.be/XXXXXXXXXXX",
-   *    description: "Descrição curta do projeto.",
-   *    software: ["Adobe Premiere Pro"],
-   *    style: "Estilo de edição",
-   *    role: "Editor & Motion Designer",
-   *    accent: "cyan",
-   *    categories: ["roblox"],
-   *  },
-   */
 ];
 
-projects.forEach((p) => {
-  p.youtubeId = getYouTubeId(p.youtube);
-  if (!p.thumbnail && p.youtubeId) {
-    p.thumbnail = `https://img.youtube.com/vi/${p.youtubeId}/hqdefault.jpg`;
+/* ============================================================
+   LOAD DATA — carrega data.json (CMS) com fallback nos dados acima
+   ============================================================ */
+async function loadData() {
+  try {
+    const res = await fetch("./data.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+
+    // Categorias do CMS (se houver)
+    if (Array.isArray(data.categories) && data.categories.length) {
+      categories = data.categories.map((c) => ({
+        id:    c.id,
+        label: c.label,
+        color: c.color || "cyan",
+      }));
+    }
+
+    // Vídeos do CMS (apenas ativos, ordenados)
+    if (Array.isArray(data.videos) && data.videos.length) {
+      projects = data.videos
+        .filter((v) => v.active !== false)
+        .sort((a, b) => (a.order ?? 999) - (b.order ?? 999))
+        .map((v) => ({
+          id:          v.id,
+          title:       v.title,
+          thumbnail:   v.thumbnail || "",
+          youtube:     v.youtube || "",
+          description: v.description || "",
+          software:    Array.isArray(v.software) ? v.software : [],
+          style:       v.style || "",
+          role:        v.role || "",
+          accent:      v.accent || "red",
+          categories:  Array.isArray(v.categories) ? v.categories : [],
+        }));
+    }
+  } catch (e) {
+    // data.json não encontrado — usa fallback hardcoded normalmente
+    console.log("[peter.mp4] Usando dados locais (data.json não encontrado).", e.message);
   }
-});
+
+  // Processa youtubeId e thumbnail automática (tanto fallback quanto CMS)
+  projects.forEach((p) => {
+    p.youtubeId = getYouTubeId(p.youtube);
+    if (!p.thumbnail && p.youtubeId) {
+      p.thumbnail = `https://img.youtube.com/vi/${p.youtubeId}/hqdefault.jpg`;
+    }
+  });
+}
 
 
 /* ============================================================
@@ -769,7 +747,8 @@ function boot() {
   document.getElementById("year").textContent = new Date().getFullYear();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   document.body.classList.add("is-revealed");
+  await loadData();  // carrega do data.json (CMS) ou usa fallback
   boot();
 });

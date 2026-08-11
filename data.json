@@ -1,0 +1,150 @@
+{
+  "categories": [
+    {
+      "id": "selected",
+      "label": "Selected Work",
+      "color": "yellow",
+      "order": 0
+    },
+    {
+      "id": "roblox",
+      "label": "Roblox",
+      "color": "cyan",
+      "order": 1
+    },
+    {
+      "id": "long-form",
+      "label": "Long Form",
+      "color": "pink",
+      "order": 3
+    },
+    {
+      "id": "minecraft",
+      "label": "Minecraft",
+      "color": "green",
+      "order": 2
+    }
+  ],
+  "videos": [
+    {
+      "id": "contact-me-showreel",
+      "title": "Contact Me Showreel",
+      "description": "A personal showreel demonstrating editing and motion design range — built to show rhythm, pacing and visual storytelling across different moods and genres.",
+      "youtube": "https://youtu.be/AIvBQ2YxYQU",
+      "thumbnail": "",
+      "software": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "style": "Dynamic storytelling edit",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "selected"
+      ],
+      "active": true,
+      "order": 0,
+      "createdAt": "2026-08-11T14:00:00Z"
+    },
+    {
+      "id": "roblox-intro-motion",
+      "title": "Roblox Intro Motion",
+      "description": "An energetic animated intro sequence for a Roblox gaming project — fast cuts, punchy sound design sync and bold kinetic type to hook viewers instantly.",
+      "youtube": "https://youtu.be/uMVEi3GXrt8",
+      "thumbnail": "",
+      "software": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "style": "Gaming motion graphics",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "roblox"
+      ],
+      "active": true,
+      "order": 1,
+      "createdAt": "2026-08-11T14:00:00Z"
+    },
+    {
+      "id": "roblox-99nights-intro",
+      "title": "Roblox 99 Nights Intro",
+      "description": "A Roblox intro of 99 nights in a viral style of edition.",
+      "youtube": "https://youtu.be/CvDrjwSs8lA",
+      "thumbnail": "",
+      "software": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "style": "Gaming motion graphics",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "roblox"
+      ],
+      "active": true,
+      "order": 2,
+      "createdAt": "2026-08-11T14:00:00Z"
+    },
+    {
+      "id": "mecha-camaleon-minecraft",
+      "title": "8 IDIOTAS se ESCONDEM no MECCHA CHAMELEON do MINECRAFT!",
+      "description": "Esconde-esconde no Minecraft Meccha Camaleon.",
+      "youtube": "https://youtu.be/cv1ax-LErrA",
+      "thumbnail": "",
+      "software": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "style": "Gaming motion graphics",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "minecraft"
+      ],
+      "active": true,
+      "order": 3,
+      "createdAt": "2026-08-11T14:00:00Z"
+    },
+    {
+      "id": "my-first-video",
+      "title": "My first video",
+      "description": "My first Video on youtube.",
+      "youtube": "https://youtu.be/rwKTxNSZ7go",
+      "thumbnail": "",
+      "software": [
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
+      ],
+      "style": "Gaming motion graphics",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "long-form"
+      ],
+      "active": true,
+      "order": 4,
+      "createdAt": "2026-08-11T14:00:00Z"
+    },
+    {
+      "id": "forjei-a-armadura-secreta-do-minecraft-msos3eru",
+      "title": "Forjei a ARMADURA SECRETA do Minecraft...",
+      "description": "Forjei em SEGREDO o molde de armadura mais OVERPOWERED que já existiu no Minecraft e ninguém no servidor podia descobrir! Com encantamentos absurdos como Speed XI, Strength X e Undying X, essa armadura simplesmente QUEBROU o jogo.",
+      "youtube": "https://youtu.be/YAMLX0LzTAA?si=Gr8uxU24mV_wwONg",
+      "thumbnail": "",
+      "software": [
+        "Adobe Premiere Pro"
+      ],
+      "style": "",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "minecraft"
+      ],
+      "active": true,
+      "order": 5,
+      "createdAt": "2026-08-11T14:51:32.106Z",
+      "updatedAt": "2026-08-11T14:51:50.566Z"
+    }
+  ]
+}
