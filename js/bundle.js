@@ -104,18 +104,6 @@ let projects = [
     role:        "Editor & Motion Designer",
     accent:      "red",
     categories:  ["minecraft"],
-  },
-  {
-    id:          "huss-valley-song-full-terrible-things-x-charlie-s-inferno-ma-msp8uqw7",
-    title:       "\"HUSS VALLEY SONG\" FULL | Terrible things x Charlie's Inferno mashup (Again)",
-    thumbnail:   "",
-    youtube:     "https://www.youtube.com/watch?v=6qAiD88acds&list=RD6qAiD88acds&start_radio=1",
-    description: "huss valley 🎈 (but again)\n\nmade it cuz 1 or 3 people asked 🥹",
-    software:    [],
-    style:       "TESTE WUBBA LUBA DUB DUB",
-    role:        "Editor & Motion Designer",
-    accent:      "red",
-    categories:  ["selected"],
   }
 ];
 /* CMS_DATA_END */
