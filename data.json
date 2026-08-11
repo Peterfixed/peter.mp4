@@ -128,14 +128,15 @@
     },
     {
       "id": "forjei-a-armadura-secreta-do-minecraft-msos3eru",
-      "title": "Tese",
+      "title": "Forjei a ARMADURA SECRETA do Minecraft...",
       "description": "Forjei em SEGREDO o molde de armadura mais OVERPOWERED que já existiu no Minecraft e ninguém no servidor podia descobrir! Com encantamentos absurdos como Speed XI, Strength X e Undying X, essa armadura simplesmente QUEBROU o jogo.",
       "youtube": "https://youtu.be/YAMLX0LzTAA?si=Gr8uxU24mV_wwONg",
       "thumbnail": "https://img.youtube.com/vi/YAMLX0LzTAA/hqdefault.jpg",
       "software": [
-        "Adobe Premiere Pro"
+        "Adobe Premiere Pro",
+        "Adobe After Effects"
       ],
-      "style": "",
+      "style": "Dynamic Video",
       "role": "Editor & Motion Designer",
       "accent": "red",
       "categories": [
@@ -144,7 +145,7 @@
       "active": true,
       "order": 5,
       "createdAt": "2026-08-11T14:51:32.106Z",
-      "updatedAt": "2026-08-11T15:06:01.695Z"
+      "updatedAt": "2026-08-11T15:08:51.651Z"
     }
   ]
 }
