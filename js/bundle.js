@@ -104,6 +104,18 @@ let projects = [
     role:        "Editor & Motion Designer",
     accent:      "red",
     categories:  ["minecraft"],
+  },
+  {
+    id:          "ultimo-video-obrigado-a-todos-mspeiyk9",
+    title:       "Último vídeo ! Obrigado a todos !",
+    thumbnail:   "",
+    youtube:     "https://www.youtube.com/watch?v=QZ28kC7vpqc",
+    description: "adada",
+    software:    ["Adobe Premier"],
+    style:       "Dynamic Video - Long Form",
+    role:        "Editor & Motion Designer",
+    accent:      "red",
+    categories:  ["long-form"],
   }
 ];
 /* CMS_DATA_END */
