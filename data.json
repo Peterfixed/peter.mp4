@@ -146,25 +146,6 @@
       "order": 5,
       "createdAt": "2026-08-11T14:51:32.106Z",
       "updatedAt": "2026-08-11T15:08:51.651Z"
-    },
-    {
-      "id": "ultimo-video-obrigado-a-todos-mspeiyk9",
-      "title": "Último vídeo ! Obrigado a todos !",
-      "description": "adada",
-      "youtube": "https://www.youtube.com/watch?v=QZ28kC7vpqc",
-      "thumbnail": "",
-      "software": [
-        "Adobe Premier"
-      ],
-      "style": "Dynamic Video - Long Form",
-      "role": "Editor & Motion Designer",
-      "accent": "red",
-      "categories": [
-        "long-form"
-      ],
-      "active": true,
-      "order": 7,
-      "createdAt": "2026-08-12T01:19:29.145Z"
     }
   ]
 }
