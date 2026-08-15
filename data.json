@@ -146,6 +146,25 @@
       "order": 5,
       "createdAt": "2026-08-11T14:51:32.106Z",
       "updatedAt": "2026-08-11T15:08:51.651Z"
+    },
+    {
+      "id": "virei-o-mestre-da-pesca-e-dominei-esse-servidor-mststr19",
+      "title": "Virei o MESTRE DA PESCA e DOMINEI ESSE SERVIDOR",
+      "description": "Descobri o segredo mais OP do Minecraft: virei o MESTRE DA PESCA e comecei a DOMINAR esse servidor só com uma vara de pescar! Ninguém esperava que a pescaria pudesse me deixar tão forte.",
+      "youtube": "https://youtu.be/2Ta6LzB6nGI?si=eXs61JkEiKMipPYi",
+      "thumbnail": "",
+      "software": [
+        "Adobe Premier Pro"
+      ],
+      "style": "Gameplay",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "minecraft"
+      ],
+      "active": true,
+      "order": 6,
+      "createdAt": "2026-08-15T03:10:51.933Z"
     }
   ]
 }

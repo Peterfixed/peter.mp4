@@ -104,6 +104,18 @@ let projects = [
     role:        "Editor & Motion Designer",
     accent:      "red",
     categories:  ["minecraft"],
+  },
+  {
+    id:          "virei-o-mestre-da-pesca-e-dominei-esse-servidor-mststr19",
+    title:       "Virei o MESTRE DA PESCA e DOMINEI ESSE SERVIDOR",
+    thumbnail:   "",
+    youtube:     "https://youtu.be/2Ta6LzB6nGI?si=eXs61JkEiKMipPYi",
+    description: "Descobri o segredo mais OP do Minecraft: virei o MESTRE DA PESCA e comecei a DOMINAR esse servidor só com uma vara de pescar! Ninguém esperava que a pescaria pudesse me deixar tão forte.",
+    software:    ["Adobe Premier Pro"],
+    style:       "Gameplay",
+    role:        "Editor & Motion Designer",
+    accent:      "red",
+    categories:  ["minecraft"],
   }
 ];
 /* CMS_DATA_END */
