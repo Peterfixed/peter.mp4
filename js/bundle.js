@@ -111,7 +111,7 @@ let projects = [
     thumbnail:   "",
     youtube:     "https://youtu.be/2Ta6LzB6nGI?si=eXs61JkEiKMipPYi",
     description: "Descobri o segredo mais OP do Minecraft: virei o MESTRE DA PESCA e comecei a DOMINAR esse servidor só com uma vara de pescar! Ninguém esperava que a pescaria pudesse me deixar tão forte.",
-    software:    ["Adobe Premier Pro"],
+    software:    ["Adobe Premier Pro","Adobe After Effects"],
     style:       "Gameplay",
     role:        "Editor & Motion Designer",
     accent:      "red",
