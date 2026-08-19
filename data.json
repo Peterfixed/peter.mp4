@@ -23,6 +23,12 @@
       "label": "Minecraft",
       "color": "green",
       "order": 2
+    },
+    {
+      "id": "gameplay-mszh5fw4",
+      "label": "Gameplay",
+      "color": "red",
+      "order": 4
     }
   ],
   "videos": [
@@ -31,7 +37,7 @@
       "title": "Contact Me Showreel",
       "description": "A personal showreel demonstrating editing and motion design range — built to show rhythm, pacing and visual storytelling across different moods and genres.",
       "youtube": "https://youtu.be/AIvBQ2YxYQU",
-      "thumbnail": "",
+      "thumbnail": "https://img.youtube.com/vi/AIvBQ2YxYQU/hqdefault.jpg",
       "software": [
         "Adobe Premiere Pro",
         "Adobe After Effects"
@@ -44,7 +50,8 @@
       ],
       "active": true,
       "order": 0,
-      "createdAt": "2026-08-11T14:00:00Z"
+      "createdAt": "2026-08-11T14:00:00Z",
+      "updatedAt": "2026-08-19T02:30:51.204Z"
     },
     {
       "id": "roblox-intro-motion",
@@ -167,6 +174,25 @@
       "order": 6,
       "createdAt": "2026-08-15T03:10:51.933Z",
       "updatedAt": "2026-08-15T03:12:28.817Z"
+    },
+    {
+      "id": "trolling-salty-admins-until-i-got-banned-mszh53qy",
+      "title": "Trolling Salty Admins Until I Got BANNED",
+      "description": "Hopped on a serious FiveM server just to mess with people, and ended up pissing off half the lobby. Let’s just say the admins were not rocking with me by the end of this.\n\nHope y'all really liked this video! This one took a while to make, so make sure to leave a like and sub, it means a lot to me, and it lets me know y'all want more!",
+      "youtube": "https://youtu.be/v3mRd9EPSLk?si=B6QMXdQmhWNQUlcE",
+      "thumbnail": "",
+      "software": [],
+      "style": "Gameplay",
+      "role": "Editor & Motion Designer",
+      "accent": "red",
+      "categories": [
+        "selected",
+        "gameplay-mszh5fw4"
+      ],
+      "active": true,
+      "order": 7,
+      "createdAt": "2026-08-19T02:30:23.290Z",
+      "updatedAt": "2026-08-19T02:30:58.860Z"
     }
   ]
 }

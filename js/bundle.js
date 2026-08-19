@@ -29,14 +29,15 @@ let categories = [
   { id: "selected", label: "Selected Work", color: "yellow", order: 0 },
   { id: "roblox", label: "Roblox", color: "cyan", order: 1 },
   { id: "minecraft", label: "Minecraft", color: "green", order: 2 },
-  { id: "long-form", label: "Long Form", color: "pink", order: 3 }
+  { id: "long-form", label: "Long Form", color: "pink", order: 3 },
+  { id: "gameplay-mszh5fw4", label: "Gameplay", color: "red", order: 4 }
 ];
 
 let projects = [
   {
     id:          "contact-me-showreel",
     title:       "Contact Me Showreel",
-    thumbnail:   "",
+    thumbnail:   "https://img.youtube.com/vi/AIvBQ2YxYQU/hqdefault.jpg",
     youtube:     "https://youtu.be/AIvBQ2YxYQU",
     description: "A personal showreel demonstrating editing and motion design range — built to show rhythm, pacing and visual storytelling across different moods and genres.",
     software:    ["Adobe Premiere Pro","Adobe After Effects"],
@@ -116,6 +117,18 @@ let projects = [
     role:        "Editor & Motion Designer",
     accent:      "red",
     categories:  ["minecraft"],
+  },
+  {
+    id:          "trolling-salty-admins-until-i-got-banned-mszh53qy",
+    title:       "Trolling Salty Admins Until I Got BANNED",
+    thumbnail:   "",
+    youtube:     "https://youtu.be/v3mRd9EPSLk?si=B6QMXdQmhWNQUlcE",
+    description: "Hopped on a serious FiveM server just to mess with people, and ended up pissing off half the lobby. Let’s just say the admins were not rocking with me by the end of this.\n\nHope y'all really liked this video! This one took a while to make, so make sure to leave a like and sub, it means a lot to me, and it lets me know y'all want more!",
+    software:    [],
+    style:       "Gameplay",
+    role:        "Editor & Motion Designer",
+    accent:      "red",
+    categories:  ["selected","gameplay-mszh5fw4"],
   }
 ];
 /* CMS_DATA_END */
